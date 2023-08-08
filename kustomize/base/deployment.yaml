@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: star-wars-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: star-wars
+  template:
+    metadata:
+      labels:
+        app: star-wars
+    spec:
+      containers:
+        - name: star-wars
+          image: starwars-node
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Never
+          resources:
+            # You must specify requests for CPU to autoscale
+            # based on CPU utilization
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
