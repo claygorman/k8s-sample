@@ -14,13 +14,7 @@ spec:
     spec:
       containers:
         - name: star-wars
-          image: starwars-node
+          image: ghcr.io/claygorman/k8s-sample:latest
           ports:
             - containerPort: 3000
-          imagePullPolicy: Never
-          resources:
-            # You must specify requests for CPU to autoscale
-            # based on CPU utilization
-            requests:
-              cpu: "250m"
-              memory: "256Mi"
+          imagePullPolicy: Always
